@@ -88,7 +88,7 @@ def plot_sample_images(model, test_loader, device, save_path="evaluation_results
 
 
 # Train the SRCNN Model
-def train_model(model, train_loader, device, num_epochs=5):
+def train_model(model, train_loader, val_loader, device, num_epochs=5):
     """Trains the SRCNN model."""
     model.to(device)
     criterion = nn.MSELoss()
@@ -114,7 +114,17 @@ def train_model(model, train_loader, device, num_epochs=5):
 
             epoch_loss += loss.item()
 
-        print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {epoch_loss/len(train_loader):.4f}")
+
+        # Compute validation loss
+        model.eval()
+        val_loss = 0
+        with torch.no_grad():
+            for lr_images, hr_images in val_loader:
+                lr_images, hr_images = lr_images.to(device), hr_images.to(device)
+                outputs = model(lr_images)
+                val_loss += criterion(outputs, hr_images).item()
+
+        print(f"Epoch [{epoch+1}/{num_epochs}], Train Loss: {epoch_loss/len(train_loader):.4f}, Val Loss: {val_loss/len(val_loader):.4f}")
 
     print("Training complete!")
     torch.save(model.state_dict(), "srcnn_model.pth")  # Save trained model
@@ -152,7 +162,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Load dataset
-    train_loader, test_loader = get_dataloaders(batch_size=32)
+    train_loader,val_loader, test_loader = get_dataloaders(batch_size=32)
 
     # Initialize model
     device = torch.device("cpu")  # Use CPU
@@ -160,7 +170,7 @@ if __name__ == "__main__":
 
     # Train and/or evaluate
     if args.train:
-        train_model(model, train_loader, device, num_epochs=7)
+        train_model(model, train_loader, val_loader, device, num_epochs=7)
 
     if args.eval:
         evaluate_model(model, test_loader, device)

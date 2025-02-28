@@ -1,7 +1,7 @@
 import torch
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
-from torch.utils.data import Dataset, DataLoader, Subset
+from torch.utils.data import Dataset, DataLoader, Subset, random_split
 import numpy as np
 from PIL import Image
 
@@ -48,21 +48,16 @@ class CIFAR10_SR(Dataset):
 return touple of training and test dataset of HR and LR images, use a sudset of total, 50 000 train and 10 000 test 
 resuce the training time
 """
-def get_dataloaders(batch_size=32, num_workers=2, train_size=50000, test_size=10000):
+def get_dataloaders(batch_size=32, num_workers=2, train_size=40000, val_size=10000, test_size=10000):
     # Load the full dataset
-    train_set = CIFAR10_SR(train=True)
+    full_train_set = CIFAR10_SR(train=True)
     test_set = CIFAR10_SR(train=False)
 
-    # Select a random subset of the dataset
-    train_indices = np.random.choice(len(train_set), train_size, replace=False)
-    test_indices = np.random.choice(len(test_set), test_size, replace=False)
+    train_set, val_set = random_split(full_train_set, [train_size, val_size])
 
-    train_set = Subset(train_set, train_indices)
-    test_set = Subset(test_set, test_indices)
-
-    # Create DataLoaders
     train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=num_workers)
+    val_loader = DataLoader(val_set, batch_size=batch_size, shuffle=False, num_workers=num_workers)  # No shuffle for validation
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
-    return train_loader, test_loader
+    return train_loader, val_loader, test_loader
 
