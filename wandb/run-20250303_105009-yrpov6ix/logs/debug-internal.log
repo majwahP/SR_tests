@@ -1,0 +1,15 @@
+{"time":"2025-03-03T10:50:09.424936591+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"/usr/terminus/data-xrm-01/stamplab/users/mwahlin/2025/trab_master/test_SR_CNN/wandb/run-20250303_105009-yrpov6ix/logs/debug-core.log"}
+{"time":"2025-03-03T10:50:09.544228906+01:00","level":"INFO","msg":"created new stream","id":"yrpov6ix"}
+{"time":"2025-03-03T10:50:09.544293543+01:00","level":"INFO","msg":"stream: started","id":"yrpov6ix"}
+{"time":"2025-03-03T10:50:09.544361557+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"yrpov6ix"}
+{"time":"2025-03-03T10:50:09.544389654+01:00","level":"INFO","msg":"sender: started","stream_id":"yrpov6ix"}
+{"time":"2025-03-03T10:50:09.544546039+01:00","level":"INFO","msg":"handler: started","stream_id":"yrpov6ix"}
+{"time":"2025-03-03T10:50:09.795685635+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-03T10:50:10.072205447+01:00","level":"INFO","msg":"stream: closing","id":"yrpov6ix"}
+{"time":"2025-03-03T10:50:10.07260196+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-03T10:50:10.074247689+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-03T10:50:11.014820392+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-03T10:50:11.197501999+01:00","level":"INFO","msg":"handler: closed","stream_id":"yrpov6ix"}
+{"time":"2025-03-03T10:50:11.197556011+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"yrpov6ix"}
+{"time":"2025-03-03T10:50:11.197582961+01:00","level":"INFO","msg":"sender: closed","stream_id":"yrpov6ix"}
+{"time":"2025-03-03T10:50:11.198847671+01:00","level":"INFO","msg":"stream: closed","id":"yrpov6ix"}
