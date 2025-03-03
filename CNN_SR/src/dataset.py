@@ -12,7 +12,7 @@ dataset by downsapling followed by upsampling.
 """
 
 class CIFAR10_SR(Dataset):
-    def __init__(self, root="./data", train=True, scale_factor=4):
+    def __init__(self, root="./data", train=True):
         super().__init__()
         
         # Define HR (high-resolution) transformations
