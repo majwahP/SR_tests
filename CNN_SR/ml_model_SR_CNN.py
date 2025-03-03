@@ -9,9 +9,9 @@ import numpy as np
 # Parameters
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
-NUM_EPOCHS = 15
+NUM_EPOCHS = 25
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-DEPTH = 8
+DEPTH = 10
 WIDTH_FACTOR = 2
 
 # Initialize WandB
