@@ -1,0 +1,16 @@
+{"time":"2025-03-03T14:22:53.965153471+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"/usr/terminus/data-xrm-01/stamplab/users/mwahlin/2025/trab_master/test_SR_CNN/wandb/run-20250303_142253-lisxxgvy/logs/debug-core.log"}
+{"time":"2025-03-03T14:22:54.084033123+01:00","level":"INFO","msg":"created new stream","id":"lisxxgvy"}
+{"time":"2025-03-03T14:22:54.084110808+01:00","level":"INFO","msg":"stream: started","id":"lisxxgvy"}
+{"time":"2025-03-03T14:22:54.084127171+01:00","level":"INFO","msg":"handler: started","stream_id":"lisxxgvy"}
+{"time":"2025-03-03T14:22:54.084199088+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"lisxxgvy"}
+{"time":"2025-03-03T14:22:54.084177437+01:00","level":"INFO","msg":"sender: started","stream_id":"lisxxgvy"}
+{"time":"2025-03-03T14:22:54.421599681+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-03T14:28:03.241141642+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-03T14:28:03.242028883+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-03T14:28:04.050896106+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-03T14:28:04.244538256+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 14-16, summary, console lines 16-21","runtime_seconds":0.193361512}],"total_operations":1}}
+{"time":"2025-03-03T14:28:05.296926839+01:00","level":"INFO","msg":"stream: closing","id":"lisxxgvy"}
+{"time":"2025-03-03T14:28:05.296982844+01:00","level":"INFO","msg":"handler: closed","stream_id":"lisxxgvy"}
+{"time":"2025-03-03T14:28:05.297003282+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"lisxxgvy"}
+{"time":"2025-03-03T14:28:05.297076698+01:00","level":"INFO","msg":"sender: closed","stream_id":"lisxxgvy"}
+{"time":"2025-03-03T14:28:05.298241509+01:00","level":"INFO","msg":"stream: closed","id":"lisxxgvy"}

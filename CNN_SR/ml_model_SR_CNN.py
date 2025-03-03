@@ -11,8 +11,8 @@ BATCH_SIZE = 32
 LEARNING_RATE = 0.001
 NUM_EPOCHS = 15
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-DEPTH = 3
-WIDTH_FACTOR = 4
+DEPTH = 8
+WIDTH_FACTOR = 2
 
 # Initialize WandB
 wandb.init(
@@ -45,9 +45,8 @@ class SRCNN(nn.Module):
 
         #additional layers
         self.hidden_layers = nn.ModuleList()
-        in_channels = 64
         for _ in range(DEPTH - 3):  # Subtract 3 to keep original structure
-            self.hidden_layers.append(nn.Conv2d(in_channels, 64, kernel_size=3, padding=1))
+            self.hidden_layers.append(nn.Conv2d(base_filters1, base_filters1, kernel_size=3, padding=1))
         self.conv2 = nn.Conv2d(base_filters1, base_filters2, kernel_size=1, padding=0)
         self.conv3 = nn.Conv2d(base_filters2, 3, kernel_size=5, padding=2)  
         self.relu = nn.ReLU()
@@ -59,6 +58,41 @@ class SRCNN(nn.Module):
         x = self.relu(self.conv2(x))
         x = self.conv3(x)  
         return x
+
+
+class SRCNN2(nn.Module):
+    def __init__(self, width_start=128, width_end=16):  
+        """
+        width_start: Number of filters in the first layer (default 128)
+        width_end: Number of filters in the second last layer before output (default 16)
+        """
+        super(SRCNN2, self).__init__()
+
+        # Define filter sizes decreasing continuously over 5 layers
+        base_filters = torch.linspace(width_start, width_end, steps=5).int().tolist()
+        
+        self.relu = nn.ReLU()
+
+        # First convolutional layer
+        self.conv1 = nn.Conv2d(3, base_filters[0], kernel_size=9, padding=4)
+
+        # Intermediate layers with decreasing filters
+        self.conv2 = nn.Conv2d(base_filters[0], base_filters[1], kernel_size=5, padding=2)
+        self.conv3 = nn.Conv2d(base_filters[1], base_filters[2], kernel_size=3, padding=1)
+        self.conv4 = nn.Conv2d(base_filters[2], base_filters[3], kernel_size=3, padding=1)
+
+        # Output layer (fixed at 3 channels for RGB)
+        self.conv_final = nn.Conv2d(base_filters[3], 3, kernel_size=5, padding=2)
+
+    def forward(self, x):
+        x = self.relu(self.conv1(x))
+        x = self.relu(self.conv2(x))
+        x = self.relu(self.conv3(x))
+        x = self.relu(self.conv4(x))
+        x = self.conv_final(x)  # No activation in the final layer
+        return x
+
+
 
 
 # PSNR Calculation
@@ -178,7 +212,7 @@ def evaluate_model(model, test_loader, device):
 
 
 #main
-model = SRCNN()
+model = SRCNN2()
 
 train_loader, val_loader, test_loader = get_dataloaders(batch_size=BATCH_SIZE)
 

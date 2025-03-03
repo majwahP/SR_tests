@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/ml_model_SR_CNN.py", line 212, in <module>
+    model = SRCNN2()
+  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/ml_model_SR_CNN.py", line 69, in __init__
+    super(SRCNN, self).__init__()
+TypeError: super(type, obj): obj must be an instance or subtype of type
+Traceback (most recent call last):
+  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/ml_model_SR_CNN.py", line 212, in <module>
+    model = SRCNN2()
+  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/ml_model_SR_CNN.py", line 69, in __init__
+    super(SRCNN, self).__init__()
+TypeError: super(type, obj): obj must be an instance or subtype of type
