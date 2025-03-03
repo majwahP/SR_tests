@@ -9,14 +9,15 @@ import numpy as np
 # Parameters
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
-NUM_EPOCHS = 15
+NUM_EPOCHS = 25
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DEPTH = 3
+WIDTH_FACTOR = 2
 
 # Initialize WandB
 wandb.init(
     project="Super-Resolution",
-    name=f"SRCNN-epochs:{NUM_EPOCHS}-LR:{LEARNING_RATE}-Depth:{DEPTH}",
+    name=f"SRCNN-epochs:{NUM_EPOCHS}-Depth:{DEPTH}-Width_fac:{WIDTH_FACTOR}",
     mode="online", #to not save each run locally
     config={
         "batch_size": BATCH_SIZE,
@@ -26,6 +27,7 @@ wandb.init(
         "architecture": "SRCNN",
         "dataset" : "CIFAR10-32",
         "depth": DEPTH,
+        "width factor": WIDTH_FACTOR,
         "conv1_filters": 64,
         "conv2_filters": 32,
     }
@@ -35,13 +37,25 @@ wandb.init(
 class SRCNN(nn.Module):
     def __init__(self):
         super(SRCNN, self).__init__()
-        self.conv1 = nn.Conv2d(3, 64, kernel_size=9, padding=4)  
-        self.conv2 = nn.Conv2d(64, 32, kernel_size=1, padding=0)  
-        self.conv3 = nn.Conv2d(32, 3, kernel_size=5, padding=2)  
+
+        base_filters1 = 64 * WIDTH_FACTOR  # Increase width (default: 64 → 128 if width_factor=2)
+        base_filters2 = 32 * WIDTH_FACTOR
+
+        self.conv1 = nn.Conv2d(3, base_filters1, kernel_size=9, padding=4)  
+
+        #additional layers
+        self.hidden_layers = nn.ModuleList()
+        in_channels = 64
+        for _ in range(DEPTH - 3):  # Subtract 3 to keep original structure
+            self.hidden_layers.append(nn.Conv2d(in_channels, 64, kernel_size=3, padding=1))
+        self.conv2 = nn.Conv2d(base_filters1, base_filters2, kernel_size=1, padding=0)
+        self.conv3 = nn.Conv2d(base_filters2, 3, kernel_size=5, padding=2)  
         self.relu = nn.ReLU()
 
     def forward(self, x):
         x = self.relu(self.conv1(x))
+        for layer in self.hidden_layers:
+            x = self.relu(layer(x))
         x = self.relu(self.conv2(x))
         x = self.conv3(x)  
         return x

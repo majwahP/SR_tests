@@ -1,0 +1,16 @@
+{"time":"2025-03-03T13:50:53.509064325+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"/usr/terminus/data-xrm-01/stamplab/users/mwahlin/2025/trab_master/test_SR_CNN/wandb/run-20250303_135053-n868vgi8/logs/debug-core.log"}
+{"time":"2025-03-03T13:50:53.626485075+01:00","level":"INFO","msg":"created new stream","id":"n868vgi8"}
+{"time":"2025-03-03T13:50:53.626556488+01:00","level":"INFO","msg":"stream: started","id":"n868vgi8"}
+{"time":"2025-03-03T13:50:53.626587581+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"n868vgi8"}
+{"time":"2025-03-03T13:50:53.626620989+01:00","level":"INFO","msg":"handler: started","stream_id":"n868vgi8"}
+{"time":"2025-03-03T13:50:53.626662735+01:00","level":"INFO","msg":"sender: started","stream_id":"n868vgi8"}
+{"time":"2025-03-03T13:50:53.867498972+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-03T13:53:24.507724615+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-03T13:53:24.508778115+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-03T13:53:25.511231742+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.658402065,"progress":"1.9KB/1.9KB"},{"desc":"uploading config.yaml","runtime_seconds":0.510004927,"progress":"776B/776B"}],"total_operations":2}}
+{"time":"2025-03-03T13:53:25.548007479+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-03T13:53:26.728414639+01:00","level":"INFO","msg":"stream: closing","id":"n868vgi8"}
+{"time":"2025-03-03T13:53:26.728439359+01:00","level":"INFO","msg":"handler: closed","stream_id":"n868vgi8"}
+{"time":"2025-03-03T13:53:26.728448884+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"n868vgi8"}
+{"time":"2025-03-03T13:53:26.72846083+01:00","level":"INFO","msg":"sender: closed","stream_id":"n868vgi8"}
+{"time":"2025-03-03T13:53:26.729494066+01:00","level":"INFO","msg":"stream: closed","id":"n868vgi8"}
