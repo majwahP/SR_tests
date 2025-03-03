@@ -17,7 +17,7 @@ WIDTH_FACTOR = 2
 # Initialize WandB
 wandb.init(
     project="Super-Resolution",
-    name=f"SRCNN-epochs:{NUM_EPOCHS}-Depth:{DEPTH}-Width_fac:{WIDTH_FACTOR}",
+    name=f"SRCNN-epochs:{NUM_EPOCHS}-Depth:{DEPTH}-Width_fac:{WIDTH_FACTOR}-resudual",
     mode="online", #to not save each run locally
     config={
         "batch_size": BATCH_SIZE,
@@ -92,7 +92,44 @@ class SRCNN2(nn.Module):
         x = self.conv_final(x)  # No activation in the final layer
         return x
 
+class ResidualSRCNN(nn.Module):
+    def __init__(self):
+        super(ResidualSRCNN, self).__init__()
 
+        base_filters1 = 64 * WIDTH_FACTOR  # Wider first layer
+        base_filters2 = 32 * WIDTH_FACTOR  # Wider second layer
+
+        self.relu = nn.ReLU()
+
+        self.conv1 = nn.Conv2d(3, base_filters1, kernel_size=9, padding=4)
+
+        # Residual layers (Extra convolutional layers)
+        self.hidden_layers = nn.ModuleList()
+        for _ in range(DEPTH - 3): 
+            self.hidden_layers.append(nn.Conv2d(base_filters1, base_filters1, kernel_size=3, padding=1))
+
+        self.conv2 = nn.Conv2d(base_filters1, base_filters2, kernel_size=1, padding=0)
+
+        # Output layer (fixed at 3 channels for RGB)
+        self.conv3 = nn.Conv2d(base_filters2, 3, kernel_size=5, padding=2)
+
+    def forward(self, x):
+        identity = x  # Save the original input
+
+        x = self.relu(self.conv1(x))
+
+        # Apply residual layers
+        for layer in self.hidden_layers:
+            residual = x  # Save the input before transformation
+            x = self.relu(layer(x))
+            x = x + residual  # Add residual connection
+
+        x = self.relu(self.conv2(x))
+        x = self.conv3(x)  # No activation in the final layer
+
+        x += identity  #  Add residual connection from the input to the final output
+
+        return x
 
 
 # PSNR Calculation
@@ -212,7 +249,7 @@ def evaluate_model(model, test_loader, device):
 
 
 #main
-model = SRCNN2()
+model = ResidualSRCNN()
 
 train_loader, val_loader, test_loader = get_dataloaders(batch_size=BATCH_SIZE)
 

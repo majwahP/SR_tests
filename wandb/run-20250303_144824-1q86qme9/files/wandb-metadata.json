@@ -1,0 +1,44 @@
+{
+  "os":  "Linux-5.10.0-33-amd64-x86_64-with-glibc2.31",
+  "python":  "CPython 3.10.16",
+  "startedAt":  "2025-03-03T13:48:24.777956Z",
+  "program":  "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/ml_model_SR_CNN.py",
+  "git":  {
+    "remote":  "https://github.com/majwahP/SR_tests.git",
+    "commit":  "add0cf21fd0f0cdd76c76cd172e582a37a684cd4"
+  },
+  "email":  "mwahlin@ethz.ch",
+  "root":  "/usr/terminus/data-xrm-01/stamplab/users/mwahlin/2025/trab_master/test_SR_CNN",
+  "host":  "hari",
+  "executable":  "/home/mwahlin/myterminus/mamba/envs/ML_env/bin/python",
+  "cpu_count":  8,
+  "cpu_count_logical":  8,
+  "gpu":  "NVIDIA GeForce RTX 2080 Ti",
+  "gpu_count":  2,
+  "disk":  {
+    "/":  {
+      "total":  "19504209920",
+      "used":  "16135868416"
+    }
+  },
+  "memory":  {
+    "total":  "270154600448"
+  },
+  "cpu":  {
+    "count":  8,
+    "countLogical":  8
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 2080 Ti",
+      "memoryTotal":  "11554717696",
+      "architecture":  "Turing"
+    },
+    {
+      "name":  "NVIDIA TITAN RTX",
+      "memoryTotal":  "25396838400",
+      "architecture":  "Turing"
+    }
+  ],
+  "cudaVersion":  "11.4"
+}
