@@ -1,0 +1,16 @@
+{"time":"2025-03-03T14:09:26.878336205+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"/usr/terminus/data-xrm-01/stamplab/users/mwahlin/2025/trab_master/test_SR_CNN/wandb/run-20250303_140926-jkvb4lzf/logs/debug-core.log"}
+{"time":"2025-03-03T14:09:26.994752782+01:00","level":"INFO","msg":"created new stream","id":"jkvb4lzf"}
+{"time":"2025-03-03T14:09:26.994814292+01:00","level":"INFO","msg":"stream: started","id":"jkvb4lzf"}
+{"time":"2025-03-03T14:09:26.994839728+01:00","level":"INFO","msg":"handler: started","stream_id":"jkvb4lzf"}
+{"time":"2025-03-03T14:09:26.994903757+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"jkvb4lzf"}
+{"time":"2025-03-03T14:09:26.99489719+01:00","level":"INFO","msg":"sender: started","stream_id":"jkvb4lzf"}
+{"time":"2025-03-03T14:09:27.264992648+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-03T14:11:46.362895412+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-03T14:11:46.364261891+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-03T14:11:47.366071864+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.630286257,"progress":"1.9KB/1.9KB"},{"desc":"uploading config.yaml","runtime_seconds":0.468228743,"progress":"803B/803B"}],"total_operations":2}}
+{"time":"2025-03-03T14:11:47.437809923+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-03T14:11:48.637738968+01:00","level":"INFO","msg":"stream: closing","id":"jkvb4lzf"}
+{"time":"2025-03-03T14:11:48.637766566+01:00","level":"INFO","msg":"handler: closed","stream_id":"jkvb4lzf"}
+{"time":"2025-03-03T14:11:48.637778545+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"jkvb4lzf"}
+{"time":"2025-03-03T14:11:48.63779663+01:00","level":"INFO","msg":"sender: closed","stream_id":"jkvb4lzf"}
+{"time":"2025-03-03T14:11:48.639000901+01:00","level":"INFO","msg":"stream: closed","id":"jkvb4lzf"}
