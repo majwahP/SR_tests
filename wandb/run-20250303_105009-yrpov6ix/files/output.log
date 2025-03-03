@@ -1,9 +1,0 @@
-Using learning rate: 0.001
-Traceback (most recent call last):
-  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/src/test_wandb.py", line 31, in <module>
-    "CPU Usage": wandb.util.cpu_load(),
-AttributeError: module 'wandb.util' has no attribute 'cpu_load'
-Traceback (most recent call last):
-  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/src/test_wandb.py", line 31, in <module>
-    "CPU Usage": wandb.util.cpu_load(),
-AttributeError: module 'wandb.util' has no attribute 'cpu_load'

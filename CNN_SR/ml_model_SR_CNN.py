@@ -9,20 +9,23 @@ import numpy as np
 # Parameters
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
-NUM_EPOCHS = 7
+NUM_EPOCHS = 15
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEPTH = 3
 
 # Initialize WandB
 wandb.init(
     project="Super-Resolution",
-    name=f"SRCNN-BS{BATCH_SIZE}-LR{LEARNING_RATE}",
+    name=f"SRCNN-epochs:{NUM_EPOCHS}-LR:{LEARNING_RATE}-Depth:{DEPTH}",
+    mode="online", #to not save each run locally
     config={
         "batch_size": BATCH_SIZE,
         "learning_rate": LEARNING_RATE,
         "num_epochs": NUM_EPOCHS,
         "optimizer": "Adam",
         "architecture": "SRCNN",
-        "depth": 3,
+        "dataset" : "CIFAR10-32",
+        "depth": DEPTH,
         "conv1_filters": 64,
         "conv2_filters": 32,
     }
