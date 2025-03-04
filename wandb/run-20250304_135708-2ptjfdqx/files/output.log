@@ -1,0 +1,15 @@
+Epoch [1/25], Train Loss: 0.0091, Val Loss: 0.0019
+Epoch [2/25], Train Loss: 0.0018, Val Loss: 0.0018
+Epoch [3/25], Train Loss: 0.0018, Val Loss: 0.0017
+Traceback (most recent call last):
+  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/ml_model_SR_CNN.py", line 256, in <module>
+    train_model(model, train_loader, val_loader, DEVICE, NUM_EPOCHS)
+  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/ml_model_SR_CNN.py", line 203, in train_model
+    epoch_loss += loss.item()
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/ml_model_SR_CNN.py", line 256, in <module>
+    train_model(model, train_loader, val_loader, DEVICE, NUM_EPOCHS)
+  File "/home/mwahlin/myterminus/2025/trab_master/test_SR_CNN/CNN_SR/ml_model_SR_CNN.py", line 203, in train_model
+    epoch_loss += loss.item()
+KeyboardInterrupt

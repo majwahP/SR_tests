@@ -25,7 +25,7 @@ wandb.init(
         "num_epochs": NUM_EPOCHS,
         "optimizer": "Adam",
         "architecture": "SRCNN",
-        "dataset" : "CIFAR10-32",
+        "dataset" : "CIFAR10-64",
         "depth": DEPTH,
         "width factor": WIDTH_FACTOR,
         "conv1_filters": 64,
